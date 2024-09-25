@@ -4,11 +4,11 @@ ROOT=$(pwd)
 
 cd "$APP"
 
-./mvnw clean
-./mvnw versions:set -DremoveSnapshot
-APP_VERSION=$(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
-./mvnw package
-./mvnw versions:set -DnextSnapshot
+mvn clean
+mvn versions:set -DremoveSnapshot
+APP_VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+mvn package
+mvn versions:set -DnextSnapshot
 
 git add pom.xml
 git commit -m "cicd: bump version ${APP}:${APP_VERSION}"
