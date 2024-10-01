@@ -1,4 +1,4 @@
 package domain;
 
-public record Candidate() {
+public record Candidate(String id) {
 }
